@@ -78,3 +78,7 @@ Intermediate
 # Cache files for the editor to use
 DerivedDataCache/
 .DS_Store
+Intermediate/CachedAssetRegistry.bin
+Intermediate/CachedAssetRegistry.bin
+Intermediate/CachedAssetRegistry.bin
+Saved/Autosaves/PackageRestoreData.json
