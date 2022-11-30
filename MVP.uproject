@@ -24,5 +24,8 @@
 			"Name": "AlembicHairImporter",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"WindowsNoEditor"
 	]
 }
