@@ -103,7 +103,7 @@ void FMeshOps::CreateFoliageAsset(const FString& FoliagePath, UStaticMesh* Sourc
 	//IAssetTools& AssetTools = FModuleManager::GetModuleChecked<FAssetToolsModule>("AssetTools").Get();
 	FString PackageName = FoliageTypePath;
 	PackageName += FoliageAssetName;
-	UPackage* Package = CreatePackage(*PackageName);
+	UPackage* Package = CreatePackage(NULL, *PackageName);
 	UFoliageType_InstancedStaticMesh* FoliageAsset = NewObject<UFoliageType_InstancedStaticMesh>(Package, *FoliageAssetName, RF_Public | RF_Standalone | RF_MarkAsRootSet);
 	FoliageAsset->SetStaticMesh(SourceAsset);
 	FAssetRegistryModule::AssetCreated(FoliageAsset);
@@ -168,10 +168,10 @@ void FMeshOps::RemoveExtraMaterialSlot(UStaticMesh* SourceMesh)
 		
 	}
 
-	int NumOfMaterials = SourceMesh->GetStaticMaterials().Num();
+	int NumOfMaterials = SourceMesh->StaticMaterials.Num();
 	for (int i = NumOfMaterials; i > 1; i--)
 	{
-		SourceMesh->GetStaticMaterials().RemoveAt(i - 1);
+		SourceMesh->StaticMaterials.RemoveAt(i - 1);
 	}
 
 	SourceMesh->Modify();

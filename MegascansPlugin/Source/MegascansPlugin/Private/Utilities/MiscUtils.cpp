@@ -244,6 +244,8 @@ bool CopyUpdatedPresetTextures()
 
 	return true;
 }
+
+
 UObject* LoadAsset(const FString& AssetPath)
 {
 	return UEditorAssetLibrary::LoadAsset(AssetPath);
@@ -397,7 +399,7 @@ FString RemoveReservedKeywords(const FString& Name)
 	{
 		if (ReservedKeywrods.Contains(NameTag))
 		{
-			ResolvedName = ResolvedName.Replace(*NameTag, TEXT(""));
+			ResolvedName.Replace(*NameTag, TEXT(""));
 		}
 	}
 	return ResolvedName;
@@ -592,7 +594,7 @@ void AssetUtils::AddStaticMaterial(UStaticMesh* SourceMesh, UMaterialInstanceCon
 
 	UMaterialInterface* NewMatInterface = CastChecked<UMaterialInterface>(NewMaterial);
 	FStaticMaterial MaterialSlot = FStaticMaterial(NewMatInterface);
-	SourceMesh->GetStaticMaterials().Add(MaterialSlot);
+	SourceMesh->StaticMaterials.Add(MaterialSlot);
 }
 
 void AssetUtils::SavePackage(UObject* SourceObject)

@@ -258,7 +258,7 @@ void FImportPlant::ApplyMaterial(PlantImportType ImportType, UMaterialInstanceCo
 			
 			AssetUtils::AddStaticMaterial(ImportedPlantMesh, BillboardInstance);			
 			FMeshSectionInfo MeshSectionInfo = ImportedPlantMesh->GetSectionInfoMap().Get(ImportedPlantMesh->GetNumLODs()-1, 0);
-			MeshSectionInfo.MaterialIndex = ImportedPlantMesh->GetStaticMaterials().Num() - 1;
+			MeshSectionInfo.MaterialIndex = ImportedPlantMesh->StaticMaterials.Num() - 1;
 			ImportedPlantMesh->GetSectionInfoMap().Set(ImportedPlantMesh->GetNumLODs() - 1, 0, MeshSectionInfo);
 			ImportedPlantMesh->Modify();
 			ImportedPlantMesh->PostEditChange();

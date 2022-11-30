@@ -88,9 +88,9 @@ void FAssetsImportController::ImportAssets(const FString& AssetsImportJson)
 		AssetImportData->AssetMetaInfo->bIsMTS = false;
 		AssetImportData->AssetMetaInfo->bIsUdim = false;
 		AssetImportData->AssetMetaInfo->bIsMixerAsset = false;
-
 		//AssetImportData->AssetMetaInfo->bSavePackages = bSavePackages;
 		AssetImportData->AssetMetaInfo->bSavePackages = false;
+
 		TSharedPtr<FAssetImportParams> AssetSetupParameters = FAssetImportParams::Get();
 		AssetRecord Record;
 		if (FAssetsDatabase::Get()->RecordExists(AssetImportData->AssetMetaInfo->Id, Record) && FPaths::DirectoryExists(FPaths::Combine(FPaths::ProjectContentDir(), Record.Path.Replace(TEXT("/Game"), TEXT("")))))
@@ -121,13 +121,12 @@ void FAssetsImportController::ImportAssets(const FString& AssetsImportJson)
 
 		}
 		// Checks for MTS - UDIMS 
-		if (AssetImportData->MaterialList.Num() > 0) {
+		if (AssetImportData->MaterialList.Num() > 1) {
 			AssetImportData->AssetMetaInfo->bIsMTS = true;
 			if (AssetImportData->TextureSets[0]->bIsUdim) {
 				AssetImportData->AssetMetaInfo->bIsUdim = true;
 			}
 		}
-
 		if (AssetImportData->AssetMetaInfo->Categories.Contains("mixer")) {
 			AssetImportData->AssetMetaInfo->bIsMixerAsset = true;
 		}
